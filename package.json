@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "claude-translate-extension",
+  "type": "module",
+  "scripts": {
+    "build": "bun scripts/build.ts",
+    "watch": "bun scripts/build.ts --watch",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/firefox-webext-browser": "^143.0.0",
+    "typescript": "^5.9.0"
+  }
+}

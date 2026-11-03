@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Claude Translate <small>EN → JA</small></h1>
+  <button id="translate" class="primary">このページを翻訳</button>
+  <div class="seg" role="radiogroup" aria-label="表示方法">
+    <label><input type="radio" name="mode" value="replace"> 置き換える</label>
+    <label><input type="radio" name="mode" value="bilingual"> 原文と併記</label>
+  </div>
+  <div class="row"><button id="restore">元に戻す</button></div>
+  <div id="status" role="status" aria-live="polite"></div>
+  <details id="settings">
+    <summary><span>設定</span><span id="tokenState"></span></summary>
+    <label>トークン
+      <input type="password" id="token" placeholder="server.py --show-token" autocomplete="off">
+    </label>
+    <div class="row"><button id="save">保存</button></div>
+  </details>
+  <script src="dist/popup.js"></script>
+</body>
+</html>
