@@ -5,11 +5,19 @@
   "scripts": {
     "build": "bun scripts/build.ts",
     "watch": "bun scripts/build.ts --watch",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "oxlint",
+    "fmt": "oxfmt --write extension/src scripts extension/popup.css",
+    "fmt:check": "oxfmt --check extension/src scripts extension/popup.css",
+    "check": "bun run lint && bun run fmt:check && bun run typecheck",
+    "prepare": "lefthook install"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/firefox-webext-browser": "^143.0.0",
+    "lefthook": "^2.2.2",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
     "typescript": "^5.9.0"
   }
 }

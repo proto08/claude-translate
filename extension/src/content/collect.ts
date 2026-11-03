@@ -5,8 +5,7 @@ import { MARK, UI_ATTR } from "./constants";
 import type { Item } from "./types";
 
 const BLOCK = "p,li,h1,h2,h3,h4,h5,h6,blockquote,figcaption,td,th,dt,dd,summary,caption,div";
-const SKIP =
-  `script,style,noscript,code,pre,textarea,input,select,svg,math,[contenteditable],[translate=no],.notranslate,[${UI_ATTR}]`;
+const SKIP = `script,style,noscript,code,pre,textarea,input,select,svg,math,[contenteditable],[translate=no],.notranslate,[${UI_ATTR}]`;
 // Page chrome (site header/footer, navigation, sidebars) is not translated; only the main content is.
 const CHROME =
   "nav,aside,footer,[role=navigation],[role=banner],[role=contentinfo],[role=complementary],[role=search]";
@@ -24,7 +23,8 @@ function isVisible(el: HTMLElement): boolean {
   if (parseFloat(cs.fontSize) < 4) return false;
   const r = el.getBoundingClientRect();
   if (r.width < 2 || r.height < 2) return false;
-  const x = r.right + window.scrollX, y = r.bottom + window.scrollY;
+  const x = r.right + window.scrollX,
+    y = r.bottom + window.scrollY;
   if (x < 0 || y < 0 || r.left + window.scrollX > document.documentElement.scrollWidth + 50) return false;
   // text colour equal to background colour (white-on-white) is also hidden text
   if (cs.color === cs.backgroundColor && cs.backgroundColor !== "rgba(0, 0, 0, 0)") return false;

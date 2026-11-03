@@ -1,14 +1,15 @@
 """Limits and token file handling."""
+
 import os
 import secrets
 from pathlib import Path
 
 # Request caps. The extension's batch limits (extension/src/content/batch.ts) must stay under these.
-MAX_BODY = 512 * 1024      # bytes per request
-MAX_ITEMS = 200            # texts per request
-MAX_CHARS = 40_000         # total chars per request
-CLAUDE_TIMEOUT = 180       # seconds
-MAX_CLAUDE_PROCS = 3       # concurrent claude processes
+MAX_BODY = 512 * 1024  # bytes per request
+MAX_ITEMS = 200  # texts per request
+MAX_CHARS = 40_000  # total chars per request
+CLAUDE_TIMEOUT = 180  # seconds
+MAX_CLAUDE_PROCS = 3  # concurrent claude processes
 CACHE_MAX_ENTRIES = 20_000
 
 DEFAULT_PORT = 8787

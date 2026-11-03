@@ -2,6 +2,7 @@
 
 Keep in sync with the extension-side visibility filter (extension/src/content/collect.ts).
 """
+
 import json
 import re
 import unicodedata
@@ -13,10 +14,7 @@ _BAD_CATEGORIES = ("Cf", "Cc", "Co", "Cs")
 def sanitize_input(t: str) -> str:
     """Drop invisible/format characters (zero-width, bidi overrides, Unicode 'tag' characters
     used for hidden instructions) and control chars; collapse whitespace."""
-    t = "".join(
-        ch for ch in t
-        if unicodedata.category(ch) not in _BAD_CATEGORIES or ch in "\n\t"
-    )
+    t = "".join(ch for ch in t if unicodedata.category(ch) not in _BAD_CATEGORIES or ch in "\n\t")
     return re.sub(r"\s+", " ", t).strip()
 
 

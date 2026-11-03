@@ -22,7 +22,8 @@ export function createProgress(): Progress {
       "box-shadow:0 4px 16px rgba(0,0,0,.3);pointer-events:none";
     text = document.createElement("div");
     track = document.createElement("div");
-    track.style.cssText = "height:4px;margin-top:8px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden";
+    track.style.cssText =
+      "height:4px;margin-top:8px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden";
     bar = document.createElement("div");
     bar.style.cssText = "height:100%;width:0;background:#fff;transition:width .25s";
     track.appendChild(bar);

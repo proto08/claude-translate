@@ -1,4 +1,5 @@
 """HTTP layer: Host/Origin/token guard, request validation, JSON responses."""
+
 import json
 import secrets
 import subprocess
@@ -16,7 +17,7 @@ class Handler(BaseHTTPRequestHandler):
     model = DEFAULT_MODEL
 
     def log_message(self, fmt, *args):  # quiet
-        sys.stderr.write("%s - %s\n" % (self.address_string(), fmt % args))
+        sys.stderr.write(f"{self.address_string()} - {fmt % args}\n")
 
     def _send(self, code: int, obj: dict):
         body = json.dumps(obj, ensure_ascii=False).encode()

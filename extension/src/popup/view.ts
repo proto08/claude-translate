@@ -15,9 +15,12 @@ export const view = {
   openSettings(): void {
     $<HTMLDetailsElement>("settings").open = true;
   },
-  getBilingual: (): boolean => document.querySelector<HTMLInputElement>("input[name=mode]:checked")!.value === "bilingual",
+  getBilingual: (): boolean =>
+    document.querySelector<HTMLInputElement>("input[name=mode]:checked")!.value === "bilingual",
   setBilingual(on: boolean): void {
-    document.querySelector<HTMLInputElement>(`input[name=mode][value=${on ? "bilingual" : "replace"}]`)!.checked = true;
+    document.querySelector<HTMLInputElement>(
+      `input[name=mode][value=${on ? "bilingual" : "replace"}]`,
+    )!.checked = true;
   },
   getTokenInput: (): string => $<HTMLInputElement>("token").value.trim(),
   clearTokenInput(): void {

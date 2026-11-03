@@ -35,3 +35,8 @@
   装飾を残したい場合は原文の下に表示するモードが安全。
 - 訳した本文はあなたのClaudeアカウント経由でAnthropicに送られます。サブスクのトークンを自分のマシン上の
   公式 `claude` CLI 経由でのみ使う構成ですが、利用規約・利用上限（長いページは枠を消費）は各自ご確認を。
+
+## 開発
+- 拡張: `bun run check`（oxlint + oxfmt + tsc）、整形は `bun run fmt`
+- サーバー: `cd server && uv run ruff check . && uv run ruff format .`
+- コミット前に lefthook が上記チェックを自動実行（`bun install` で有効化）。CI は GitHub Actions、依存更新は Dependabot。
