@@ -17,3 +17,6 @@ pre-commit:
     ruff-format:
       glob: "server/**/*.py"
       run: uv run --project server ruff format --check {staged_files}
+    actions-lock:
+      glob: ".github/workflows/*.{yml,yaml}"
+      run: gh actions-lock --verify-local
