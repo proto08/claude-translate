@@ -15,7 +15,7 @@ Firefox extension (MV3) that translates English web pages to Japanese by calling
 - Print auth token: `cd server && uv run claude-translate --show-token` (stored at `~/.config/claude-translate/token`, mode 0600)
 - Build extension: `bun install` once, then `bun run build` (`bun run watch` to rebuild on change, `bun run typecheck` for tsc only). Never edit `extension/dist/`.
 - Lint/format: extension uses **oxlint** + **oxfmt** (`bun run lint`, `bun run fmt` / `fmt:check`, `bun run check` for lint+fmt+typecheck); server uses **ruff** (`cd server && uv run ruff check . && uv run ruff format .`).
-- Git hooks: **lefthook** (`lefthook.yml`) runs these checks on staged files before each commit (installed by `bun install` via the `prepare` script). CI (`.github/workflows/ci.yml`) runs the same checks; Dependabot (`.github/dependabot.yml`) updates actions, bun and uv deps weekly.
+- Git hooks: **lefthook** (`lefthook.yml`) runs these checks on staged files before each commit (installed by `bun install` via the `prepare` script). CI (`.github/workflows/ci.yml`) runs the same checks; Dependabot (`.github/dependabot.yml`) updates actions, bun and uv deps weekly: minor/patch PRs are auto-merged by the `automerge` job in `ci.yml` after CI passes; major updates stay as open PRs for manual review.
 - Load extension: Firefox `about:debugging#/runtime/this-firefox` → load temporary add-on → `extension/manifest.json`; paste the token in the popup. Reload the add-on after each build.
 - Changing the port requires editing both `extension/manifest.json` (`host_permissions`) and `ENDPOINT` in `extension/src/background/server-client.ts`.
 
