@@ -12,7 +12,7 @@ jobs:
   extension:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.4.0
+      - uses: actions/checkout@v7.0.1
       - uses: oven-sh/setup-bun@v2.2.0
       - run: bun install --frozen-lockfile --ignore-scripts
       - run: bun run lint
@@ -26,8 +26,8 @@ jobs:
       run:
         working-directory: server
     steps:
-      - uses: actions/checkout@v4.4.0
-      - uses: astral-sh/setup-uv@v6.8.0
+      - uses: actions/checkout@v7.0.1
+      - uses: astral-sh/setup-uv@v10.3.3
       - run: uv sync --frozen
       - run: uv run ruff check .
       - run: uv run ruff format --check .
@@ -39,7 +39,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4.4.0
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
       - run: gh extension install github/gh-actions-lock --pin v0.4.1
@@ -55,7 +55,7 @@ jobs:
       pull-requests: write
     steps:
       - id: meta
-        uses: dependabot/fetch-metadata@v2.5.0
+        uses: dependabot/fetch-metadata@v3.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - if: steps.meta.outputs.update-type != 'version-update:semver-major'
