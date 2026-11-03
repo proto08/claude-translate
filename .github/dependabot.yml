@@ -1,3 +1,5 @@
+# Minor/patch updates are grouped and auto-merged by ci.yml once CI passes.
+# Major updates are NOT grouped: each opens its own PR and is left for manual review.
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -7,6 +9,7 @@ updates:
     groups:
       actions:
         patterns: ["*"]
+        update-types: [minor, patch]
 
   - package-ecosystem: bun
     directory: /
@@ -15,6 +18,7 @@ updates:
     groups:
       npm-deps:
         patterns: ["*"]
+        update-types: [minor, patch]
 
   - package-ecosystem: uv
     directory: /server
@@ -23,3 +27,4 @@ updates:
     groups:
       python-deps:
         patterns: ["*"]
+        update-types: [minor, patch]
