@@ -1,4 +1,5 @@
 """Translation policy on top of run_claude: sanitize, cache, validate, retry suspicious items alone."""
+
 import hashlib
 import sys
 import threading
@@ -29,8 +30,8 @@ def translate(texts: list[str], model: str) -> list[str | None]:
                 todo.append(i)
     if todo:
         out = run_claude([texts[i] for i in todo], model)
-        bad = [i for i, o in zip(todo, out) if not output_ok(texts[i], o)]
-        good = {i: o for i, o in zip(todo, out) if i not in bad}
+        bad = [i for i, o in zip(todo, out, strict=True) if not output_ok(texts[i], o)]
+        good = {i: o for i, o in zip(todo, out, strict=True) if i not in bad}
         # A suspicious item may have been steered by a neighbour in the same batch:
         # retry each alone (no other page text in context); still bad -> leave untranslated.
         for i in bad:

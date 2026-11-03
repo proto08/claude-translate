@@ -19,7 +19,9 @@ export function createSession(ui: Progress) {
       return;
     }
     const batches = makeBatches(list);
-    let done = 0, failed = 0, next = 0;
+    let done = 0,
+      failed = 0,
+      next = 0;
     ui.show(`翻訳中 0/${list.length}`, 0);
 
     async function worker(): Promise<void> {

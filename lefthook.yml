@@ -1,0 +1,19 @@
+# Runs before every commit. Check-only (no auto-fix); run `bun run fmt` / `uv run ruff format` to fix.
+pre-commit:
+  parallel: true
+  commands:
+    oxlint:
+      glob: "*.{ts,js}"
+      run: bunx oxlint {staged_files}
+    oxfmt:
+      glob: "{extension/src/**/*.ts,scripts/*.ts,extension/popup.css}"
+      run: bunx oxfmt --check {staged_files}
+    typecheck:
+      glob: "*.ts"
+      run: bun run typecheck
+    ruff-check:
+      glob: "server/**/*.py"
+      run: uv run --project server ruff check {staged_files}
+    ruff-format:
+      glob: "server/**/*.py"
+      run: uv run --project server ruff format --check {staged_files}

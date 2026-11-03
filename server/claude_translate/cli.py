@@ -1,4 +1,5 @@
 """Argument parsing and server startup."""
+
 import argparse
 from http.server import ThreadingHTTPServer
 
@@ -9,8 +10,9 @@ from .handler import Handler
 def main() -> None:
     ap = argparse.ArgumentParser(prog="claude-translate")
     ap.add_argument("--port", type=int, default=DEFAULT_PORT)
-    ap.add_argument("--model", default=DEFAULT_MODEL,
-                    help=f"claude model alias or id (default: {DEFAULT_MODEL})")
+    ap.add_argument(
+        "--model", default=DEFAULT_MODEL, help=f"claude model alias or id (default: {DEFAULT_MODEL})"
+    )
     ap.add_argument("--show-token", action="store_true", help="print token and exit")
     a = ap.parse_args()
 
