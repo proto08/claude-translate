@@ -19,6 +19,9 @@ updates:
       npm-deps:
         patterns: ["*"]
         update-types: [minor, patch]
+    # Match the 3-day minimum release age in bunfig.toml / server/pyproject.toml.
+    cooldown:
+      default-days: 3
 
   - package-ecosystem: uv
     directory: /server
@@ -28,3 +31,6 @@ updates:
       python-deps:
         patterns: ["*"]
         update-types: [minor, patch]
+    # Match the 3-day minimum release age in bunfig.toml / server/pyproject.toml.
+    cooldown:
+      default-days: 3

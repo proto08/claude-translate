@@ -20,6 +20,10 @@ dev = [
     "ruff>=0.17.3",
 ]
 
+[tool.uv]
+# Only resolve package versions published at least 3 days ago (supply-chain safety).
+exclude-newer = "3 days"
+
 [tool.ruff]
 line-length = 110
 target-version = "py310"
