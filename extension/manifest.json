@@ -3,16 +3,10 @@
   "name": "Claude Translate (local)",
   "version": "0.1.0",
   "description": "Translate English pages to Japanese with Claude via a local server (uses your Claude Code login).",
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "claude-translate-local@example.invalid",
-      "strict_min_version": "128.0",
-      "data_collection_permissions": { "required": ["websiteContent"] }
-    }
-  },
+  "minimum_chrome_version": "116",
   "permissions": ["activeTab", "scripting", "storage"],
   "host_permissions": ["http://127.0.0.1:8787/*"],
-  "background": { "scripts": ["dist/background.js"] },
+  "background": { "service_worker": "dist/background.js" },
   "action": {
     "default_title": "Claude Translate",
     "default_popup": "popup.html"

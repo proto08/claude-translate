@@ -7,7 +7,7 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["firefox-webext-browser", "bun"]
+    "types": ["chrome", "bun"]
   },
   "include": ["extension/src/**/*.ts", "scripts/*.ts"]
 }

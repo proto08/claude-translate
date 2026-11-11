@@ -28,7 +28,7 @@ export function createSession(ui: Progress) {
       while (!aborted && next < batches.length) {
         const batch = batches[next++]!;
         const req: TranslateRequest = { type: "translate", texts: batch.map((b) => b.text) };
-        const res: TranslateResponse | undefined = await browser.runtime.sendMessage(req);
+        const res: TranslateResponse | undefined = await chrome.runtime.sendMessage(req);
         if (aborted) return;
         if (res?.error || !res?.translations) {
           failed += batch.length;
