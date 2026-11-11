@@ -27,11 +27,11 @@ jobs:
         working-directory: server
     steps:
       - uses: actions/checkout@v7.0.1
-      - uses: astral-sh/setup-uv@v10.3.3
-      - run: uv sync --frozen
-      - run: uv run ruff check .
-      - run: uv run ruff format --check .
-      - run: uv run claude-translate --help
+      # Go is preinstalled on ubuntu-latest runners.
+      - run: test -z "$(gofmt -l .)"
+      - run: go vet ./...
+      - run: go test ./...
+      - run: go build ./...
 
   # Fails if actions.lock is out of sync with the workflows or a locked pin no longer verifies upstream.
   lockfile:
